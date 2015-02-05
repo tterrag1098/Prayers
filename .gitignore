@@ -1,0 +1,24 @@
+*.class
+*.war
+*.ear
+*.mtl
+
+#Gradle
+build
+.gradle
+libs
+
+#Run Directory
+run
+
+#Eclipse
+eclipse
+bin
+*.classpath
+*.project
+*.settings
+
+#IntelliJ Idea
+.idea
+out
+*.iml

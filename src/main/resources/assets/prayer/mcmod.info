@@ -1,0 +1,21 @@
+[
+{
+  "modid": "Prayers",
+  "name": "Minecraft Prayers",
+  "description": "Pray to the gods of Minecraft. They may reward you",
+  "version": "0.1.4",
+  "mcversion": "1.6.X",
+  "url": "http://forum.feed-the-beast.com/threads/prayers.27015/",
+  "updateUrl": "",
+  "authors": [
+    "mDiyo"
+  ],
+  "credits": "mDiyo",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
