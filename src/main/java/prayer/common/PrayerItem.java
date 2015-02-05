@@ -5,6 +5,7 @@ import java.util.List;
 import prayer.PrayerTimer;
 import prayer.Prayers;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -17,7 +18,6 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-
 import static prayer.common.PConfigHandler.*;
 
 public class PrayerItem extends ItemBow
@@ -27,6 +27,7 @@ public class PrayerItem extends ItemBow
         super();
         this.maxStackSize = 1;
         setCreativeTab(CreativeTabs.tabMisc);
+        setUnlocalizedName("prayers.prayer");
     }
 
     @SideOnly(Side.CLIENT)
@@ -84,7 +85,7 @@ public class PrayerItem extends ItemBow
         PrayerTimer timer = Prayers.getTimer(player.getCommandSenderName());
         if (!player.capabilities.isCreativeMode)
         {
-            timer.notch = (world.getWorldInfo().getWorldTotalTime() + prayerDelay);
+            timer.notch = (world.getWorldInfo().getWorldTotalTime() + prayerDelay + 2000);
         }
         if (!world.isRemote)
         {
@@ -121,6 +122,7 @@ public class PrayerItem extends ItemBow
         }
     }
 
+    @SuppressWarnings({ "unchecked", "rawtypes" })
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4)
     {
@@ -130,11 +132,11 @@ public class PrayerItem extends ItemBow
         if (time > totalTime)
         {
             long offset = time - totalTime;
-            list.add("Can pray in " + formatTime(offset));
+            list.add(I18n.format("prayers.tooltip.timer", formatTime(offset)));
         }
         else
         {
-            list.add("Ready to pray");
+            list.add(I18n.format("prayers.tooltip.ready"));
         }
     }
 
@@ -143,13 +145,7 @@ public class PrayerItem extends ItemBow
         long s = time / 20L;
         long seconds = s % 60L;
         long minutes = s / 60L;
-        StringBuilder builder = new StringBuilder();
-        if (minutes > 0L)
-        {
-            builder.append(minutes).append("m ");
-        }
-        builder.append(seconds).append("s");
-        return builder.toString();
+        return I18n.format("prayers.tooltip.timeformat", minutes, seconds);
     }
 
     public EnumAction getItemUseAction(ItemStack par1ItemStack)

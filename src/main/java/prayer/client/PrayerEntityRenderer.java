@@ -1,7 +1,5 @@
 package prayer.client;
 
-import java.util.Random;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
@@ -18,7 +16,6 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class PrayerEntityRenderer extends Render
 {
-    private Random random = new Random();
     Minecraft mc = Minecraft.getMinecraft();
 
     public void doRenderMazinkyoukan(PrayerEntity prayer, double x, double y, double z, float f, float f1)

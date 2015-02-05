@@ -56,9 +56,8 @@ public class PPacketHandler
         }
     }
 
-    private class PrayersPacketHandler implements IMessageHandler<PrayersPacket, IMessage>
+    public static class PrayersPacketHandler implements IMessageHandler<PrayersPacket, IMessage>
     {
-
         @Override
         public IMessage onMessage(PrayersPacket message, MessageContext ctx)
         {
